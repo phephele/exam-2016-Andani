@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"exam2016\"\noutput: github_document\n---\n## null hypothesis\n*  mean oral body temperature does not affect heart rate at rest in male and female\n## alternative hypothesis\n* mean oral body temperature affects heart rate at rest in male and females\n## type of data\n* continous data\n* unpaired\n## statistical test\n* unpaired t.test\n## test assumptions\n*  tested on 2 separate individual\n* normally distributed\n\n```{r question1, echo=TRUE}\nG <- read.csv(\"file:///C:/Users/Wits-User/Desktop/Exam2016/question1.csv\")\nlibrary(tidyr)\n# Tidy the data\nhead (G)\nG <- G [, c(\"body_temperature\", \"male\", \"female\")]\nwith(G, plot(x=body_temperature, y= male)\n\n\n```\n\n## GitHub Documents\n\nThis is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.\n\n## Including Code\n\nYou can include R code in the document as follows:\n\n```{r question 2, echo=TRUE}\nm <- read.csv(\"file:///C:/Users/Wits-User/Desktop/Exam2016/question2.csv\")\n# tidy data\nm1 <- gather(m, key = key, value = value, handedness, first_stumble, final_position, -id, -sex)\nm2 <- group_by(m1, sex,id)\nsummary(m, mean= mean(value))\nm <- aov(handedness~first_stumble+ final_position, data = G)\n\n\n```\n\n## Including Plots\n\nYou can also embed plots, for example:\n## null hypothesis\n\n* running time does not affect the number of calories consumed\n## alternative hypothesis\n\n* running time has an effect on the number of calories consumed\n## type of data being analysed\n* numerical data : continous data\n## statistical test\n* linear regression\n*the generalized linear model because the diagnostics I ran were not normally distributed.\n## assumption\n* there is a trend bewteen x and y\n* the residuals are normally distributed and Homoskedastcity\n```{r question 3, echo=TRUE}\nx <- read.csv(\"file:///C:/Users/Wits-User/Desktop/Exam2016/question3.csv\")\n# TIDY DATA\ntime= x$time\ncalories= x$calories\nhead(cbind(time, calories))\n# scatter plot\nplot(time, calories, xlab = \"time\", ylab = \"calories\")\nabline( lm(d$calories~d$time, data = d), col=\"blue\", lwd=2)\n# linear regression\n x1 <-lm(x$time~x$calories, data= x)\n summary(x1)\n #diagnostic plot 1: Homoskedasticity\n plot( x = x1$fitted.values, y = x1$residuals, main = \"Homoskedasticity\", col=\"green\")\n abline(h=0)\n #diagnostic plot 2: gaussian residual distribution\n qqnorm(x1$residuals)\n qqline(x1$residuals)\n # variables have non-gaussian error of distribution\n glm(x$calories~x$time, data= x)\n summary(x1)\n\n```\n## statistical results\n*p = 7.95e-12 which is less than 0.05 therefore reject the null hypothesis.\n* running has an effect on the consumption of calories\n```{r}\nf <- read.csv(\"foo <- rnorm(10000, mean = 60, sd = 3) # final mark\nbar <- rnorm(10000, mean = 68, sd = 5) # project mark\nbaz <- rep(seq(from = 1997, to = 2006), each = 1) # years\n\nyear <- sample(baz, 150, replace = TRUE,\n               prob = c(0.05, 0.05, 0.08, 0.08, \n                          0.1, 0.13, 0.14, 0.13, 0.12, 0.12))\nproject_mark <- sample(bar, 150, replace = TRUE)\nfinal_mark <- sample(foo, 150, replace = TRUE)\n\nplot_data <- data_frame(year = year,\n                        project_mark = round(project_mark, 1),\n                        final_mark = round(final_mark, 1)) %>%\n    arrange(year)\n\")\n\n",
+    "created" : 1472637435637.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3868234248",
+    "id" : "987ECE8D",
+    "lastKnownWriteTime" : 1472643548,
+    "last_content_update" : 1472645717732,
+    "path" : "C:/Users/Wits-User/Desktop/Exam2016/README.Rmd",
+    "project_path" : "README.Rmd",
+    "properties" : {
+        "chunk_rendered_width" : "-22",
+        "tempName" : "Untitled3"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

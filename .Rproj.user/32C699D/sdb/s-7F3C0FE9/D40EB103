@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"exam2016\"\noutput: github_document\n---\nmean oral temperature does not have an effect on heart rate on male and females\n## alternative hypothesis\n*mean oral temperature has an effect on heart rate on male and females\n## type of data being analysed\n* continous data\n## statistical test\nunpaired t.test\n#test assumption\ncomparing means of 2 individuals\n\n```{r question1, echo=TRUE}\nG <- read.csv(\"file:///H:/Exam2016/question1.csv\")\nlibrary(tidyr)\n# Tidy the data\nhead (G)\nG <- xtabs(~body_temperature+male + female, data= G)\n\n\n```\n\n## GitHub Documents\n\nThis is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.\n\n## Including Code\n\nYou can include R code in the document as follows:\n\n```{r question 2, echo=TRUE}\nlibrary(tidyr)\nlibrary(dplyr)\nm <- read.csv(\"question2.csv\")\n# tidy data\nm1 <- gather(m, key = key, value = value, handedness, first_stumble, final_position, -id, -sex)\n\nm2 <- group_by(m1, sex,id)\n\nsummary(m, mean= mean(value))\n\nm <- aov(m$handedness~m$first_stumble+ m$final_position, data = G)\n\n\n```\n\n## Including Plots\n\nYou can also embed plots, for example:\n## null hypothesis\n\n* running time does not affect the number of calories consumed\n## alternative hypothesis\n\n* running time has an effect on the number of calories consumed\n## type of data being analysed\n* numerical data : continous data\n## statistical test\n* linear regression\n*the generalized linear model because the diagnostics I ran were not normally distributed.\n## assumption\n* there is a trend bewteen x and y\n* the residuals are normally distributed and Homoskedastcity\n```{r question 3, echo=TRUE}\nx <- read.csv(\"question3.csv\")\n# TIDY DATA\ntime= x$time\ncalories= x$calories\nhead(cbind(time, calories))\n# scatter plot\nplot(time, calories, xlab = \"time\", ylab = \"calories\")\nabline( lm(x$calories~x$time, data = x), col=\"blue\", lwd=2)\n# linear regression\n x1 <-lm(x$time~x$calories, data= x)\n summary(x1)\n #diagnostic plot 1: Homoskedasticity\n plot( x = x1$fitted.values, y = x1$residuals, main = \"Homoskedasticity\", col=\"green\")\n abline(h=0)\n #diagnostic plot 2: gaussian residual distribution\n qqnorm(x1$residuals)\n qqline(x1$residuals)\n # variables have non-gaussian error of distribution\n glm(x$calories~x$time, data= x)\n summary(x1)\n\n```\n## statistical results\n*p = 7.95e-12 which is less than 0.05 therefore reject the null hypothesis.\n* running has an effect on the consumption of calories\n```{r}\n\n```\n\n",
+    "created" : 1472647943419.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "782895096",
+    "id" : "D40EB103",
+    "lastKnownWriteTime" : 1472648510,
+    "last_content_update" : 1472648509074,
+    "path" : "H:/Exam2016/README.Rmd",
+    "project_path" : "README.Rmd",
+    "properties" : {
+        "chunk_rendered_width" : "650"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
